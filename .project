@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>hibernate_basic_project_01</name>
+	<name>hibernate-one-to-one-unidirectional</name>
 	<comment></comment>
 	<projects>
 	</projects>
