@@ -6,7 +6,7 @@ import org.hibernate.cfg.Configuration;
 
 import com.sbits.demo.entity.Instructor;
 import com.sbits.demo.entity.InstructorDetail;
-import com.sbits.demo.entity.Student;
+
 
 public class DeleteDemo {
 

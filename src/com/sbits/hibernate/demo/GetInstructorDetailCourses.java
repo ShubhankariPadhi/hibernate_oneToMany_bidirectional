@@ -4,11 +4,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import com.sbits.demo.entity.Course;
 import com.sbits.demo.entity.Instructor;
 import com.sbits.demo.entity.InstructorDetail;
 
 
-public class CreateDemo {
+public class GetInstructorDetailCourses {
 
 	public static void main(String[] args) {
 		
@@ -16,35 +17,32 @@ public class CreateDemo {
 		
 		//create sessionFactory
 		SessionFactory factory=new Configuration().configure()
-				           .addAnnotatedClass(InstructorDetail.class).addAnnotatedClass(Instructor.class).buildSessionFactory();
+				           .addAnnotatedClass(InstructorDetail.class).addAnnotatedClass(Instructor.class).addAnnotatedClass(Course.class).buildSessionFactory();
 		
 		//create session
 		Session session=factory.getCurrentSession();
 		
 		try {
 			
-			Instructor tempInstructor=new Instructor("sonu","padhi","so@gmail");
-			
-			InstructorDetail tempInstructorDetail=new InstructorDetail("backtoart","art");
-			
-			//associate the objects
-			tempInstructor.setInstructorDetail(tempInstructorDetail);
-			
-			
 			//start a transaction
 			session.beginTransaction();
 			
-			
-			//save the object 
-			
-			session.save(tempInstructor);
-			
+		int theId=1;
+		Instructor tempInstructor=session.get(Instructor.class,theId);
+		
+		
+		System.out.println("instructor:" +tempInstructor);
+		
+		System.out.println("courses"+ tempInstructor.getCourses());
+		
+		
 			//commit the transaction
 			session.getTransaction().commit();
 			
 		    
 		}
 		finally {
+			session.close();
 			factory.close();
 		}
 	}
